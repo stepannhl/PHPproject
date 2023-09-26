@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проверка заказов</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="/sk/static/style.css">
+  </head>
+
+  <body>
+    <header id="admin-navbar"></header>
+
+    <main>
+      <h2>ЗАКАЗЫ НА ПРОВЕРКУ</h2>
+
+      <ul>
+        <?php
+        foreach ($pending_orders_data as $this_pending_order_data) {
+          echo "
+            <li>
+              <a class='link-empty-decoration black-link' href='/sk/admin_order_page.php?order_id={$this_pending_order_data["id"]}'>
+                Заказ {$this_pending_order_data["id"]}.
+                Время доставки: {$this_pending_order_data["time_of_delivery"]}.
+                Дата доставки: {$this_pending_order_data["date_of_delivery"]}
+              </a>
+            </li>
+          ";
+        }
+        ?>
+
+        <!-- * Шаблон для вывода заказов. -->
+        <!-- <li>
+          Заказ ID. 
+          Время доставки. 
+          Дата доставки
+        </li>
+
+        <li>
+          Заказ ID. 
+          Время доставки. 
+          Дата доставки
+        </li>
+
+        <li>
+          Заказ ID. 
+          Время доставки. 
+          Дата доставки
+        </li> -->
+      </ul>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/sk/static/navbar.js"></script>
+  </body>
+</html>

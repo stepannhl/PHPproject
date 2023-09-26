@@ -1,0 +1,92 @@
+/* Основные стили */
+form > div {
+  margin: 16px 0;
+}
+
+.custom-input {
+  width: 100%;
+}
+
+.success-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
+}
+
+/* Заголовок */
+header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-links {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 25px
+}
+
+.navbar-links:hover {
+  text-decoration: none;
+  color: gray;
+}
+
+/* Заказы */
+.accepted-order {
+  color: green;
+}
+
+.rejected-order {
+  color: red;
+}
+
+.order-under-consideration {
+  color: gray;
+}
+
+.order-under-consideration::after {
+  content: "(на рассмотрении)";
+}
+
+.order-data,
+.user-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.btns-container {
+  margin-top: 20px;
+}
+
+.custom-form {
+  display: flex;
+  justify-content: space-around;
+}
+
+.black-link {
+  color: black;
+}
+
+.link-empty-decoration:hover {
+  text-decoration: none;
+}
+
+.accepted-order {
+  color: green;
+}
+
+.rejected-order {
+  color: red;
+}
+
+.pending-order {
+  color: gray;
+}
+
+.admin-management-btns * {
+  margin-right: 10px;
+}

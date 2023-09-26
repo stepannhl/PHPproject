@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+  <link rel="stylesheet" href="/sk/static/style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Вход в аккаунт</h1>
+  
+    <form action="" method="post">
+      <p>Чтобы получить доступ к контенту, необходимо войти в аккаунт</p>
+      
+      <div>
+        <label for="email">Электронная почта</label>
+        <input class="custom-input" type="text" name="email" id="email" required>
+      </div>
+      
+      <div>
+        <label for="password">Пароль</label>
+        <input class="custom-input" type="password" name="password" id="password" required>
+      </div>
+      
+      <input type="submit" value="Принять">
+    </form>
+    
+    <?php
+    if (isset($error_message)) {
+      echo "<div class='error-message'>{$error_message}</div>";
+    }
+    ?>
+
+    <p><a href="/sk/signup.php">Еще не имеете аккаунт? Зарегистрироваться</a></p>
+  </main>
+</body>
+</html>

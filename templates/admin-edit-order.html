@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Изменить заказ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+  <link rel="stylesheet" href="/sk/static/style.css">
+</head>
+
+<body>
+  <header id="admin-navbar"></header>
+
+  <main>
+    <h2>
+      ИЗМЕНИТЬ ЗАКАЗ №
+      <?php
+      if (isset($order_data["id"])) {
+        echo $order_data["id"];
+      }
+      ?>
+    </h2>
+
+    <form method="post">
+      <div>
+        <label for="user-id">Пользователь</label>
+        <select class="custom-input" name="user-id" id="user-id">
+          <?php
+          if (isset($users_data)) {
+            foreach ($users_data as $this_user_data) {
+              if ($this_user_data["id"] == $order_data["user_id"]) {
+                echo "<option value='{$this_user_data["id"]}' selected>
+                  {$this_user_data["id"]} - {$this_user_data["name"]}
+                </option>";
+              } else {
+                echo "<option value='{$this_user_data["id"]}'>
+                  {$this_user_data["id"]} - {$this_user_data["name"]}
+                </option>";
+              }
+            }
+          }
+          ?>
+        </select>
+      </div>
+
+      <div>
+        <label for="material-id">Тип материала</label>
+        <select class="custom-input" name="material-id" id="material-id" required>
+          <?php
+          if (isset($materials_data)) {
+            foreach ($materials_data as $this_material_data) {
+              if ($this_material_data["id"] == $order_data["material_id"]) {
+                echo "<option value='${this_material_data["id"]}' selected>
+                  {$this_material_data["name"]}
+                </option>";
+              } else {
+                echo "<option value='${this_material_data["id"]}'>
+                  {$this_material_data["name"]}
+                </option>";
+              }
+            }
+          }
+          ?>
+        </select>
+      </div>
+
+      <div>
+        <label for="volume">Объем</label>
+        <input class="custom-input" type="number" min="0" pattern="\d+" name="volume" id="volume" value="<?=$order_data['volume']?>" required>
+      </div>
+
+      <div>
+        <label for="date-of-delivery">Дата доставки</label>
+        <input class="custom-input" type="date" name="date-of-delivery" id="date-of-delivery" value="<?=$order_data['date_of_delivery']?>" required>
+      </div>
+
+      <div>
+        <label for="address">Адрес доставки</label>
+        <input class="custom-input" type="text" name="address" id="address" value="<?=$order_data['address']?>" required>
+      </div>
+
+      <div>
+        <div>Время доставки</div> 
+        
+        <div>
+          <input type="radio" name="time-of-delivery" id="morning-time" value="morning-time" selected required>
+          <label for="morning-time">8:00-15:00</label>
+        </div>
+        
+        <div>
+          <input type="radio" name="time-of-delivery" id="evening-time" value="evening-time">
+          <label for="evening-time">15:00-23:00</label>
+        </div>
+      </div>
+
+      <div>
+        <div>Дополнительные параметры</div>
+
+        <div>
+          <?php
+          if (isset($order_data["will_truck_pass"])) {
+            if ($order_data["will_truck_pass"]) {
+              echo "<input type='checkbox' name='can-truck-go-through' id='can-truck-go-through' checked>";
+            } else {
+              echo "<input type='checkbox' name='can-truck-go-through' id='can-truck-go-through'>";
+            }
+          }
+          ?>
+          <label for="can-truck-go-through">Может проехать грузовик</label>
+        </div>
+
+        <div>
+          <?php
+          if (isset($order_data["is_credit_payment"])) {
+            if ($order_data["is_credit_payment"]) {
+              echo "<input type='checkbox' name='is-there-credit' id='is-there-credit' checked>";
+            } else {
+              echo "<input type='checkbox' name='is-there-credit' id='is-there-credit'>";
+            }
+          }
+          ?>
+          <label for="is-there-credit">Оплата в кредит</label>
+        </div>
+      </div>
+
+      <input type="submit" value="Принять">
+    </form>
+  </main>  
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="/sk/static/navbar.js"></script>
+</body>
+</html>

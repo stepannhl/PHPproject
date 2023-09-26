@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проверить заказ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="/sk/static/style.css">
+  </head>
+
+  <body>
+    <header id="customer-navbar"></header>
+
+    <main>
+      <h2>ПРОВЕРИТЬ ЗАКАЗ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Параметр</th>
+            <th>Значение</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Тип материала</td>
+            <td>
+              <?php
+              if (isset($order["type-of-material"])) {
+                echo $order["type-of-material"];
+              }
+              ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Объем</td>
+            <td>
+              <?php
+              if (isset($order["volume"])) {
+                echo $order["volume"];
+              }
+              ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Дата доставки</td>
+            <td>
+              <?php
+              if (isset($order["date-of-delivery"])) {
+                echo $order["date-of-delivery"];
+              }
+              ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Время доставки</td>
+            <td>
+              <?php
+              if (isset($order["time-of-delivery"])) {
+                echo $order["time-of-delivery"];
+              }
+              ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Может ли проехать грузовик?</td>
+            <td>
+              <?php
+              if (isset($order["can-truck-go-through"])) {
+                echo $order["can-truck-go-through"];
+              }
+              ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Оплата в кредит?</td>
+            <td>
+              <?php
+              if (isset($order["is-there-credit"])) {
+                echo $order["is-there-credit"];
+              }
+              ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Адрес доставки</td>
+            <td>
+              <?php
+              if (isset($order["address"])) {
+                echo $order["address"];
+              }
+              ?>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Итоговая цена</td>
+            <td>
+              <?php
+              if (isset($order["price"])) {
+                echo $order["price"];
+              }
+              ?>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form class="btns-container custom-form" action="" method="post">
+        <a class="link-empty-decoration" href="/sk/customer_make_order.php">
+          <input type="button" value="Вернуться">
+        </a>
+
+        <input type="submit" name="submit-btn" value="Продолжить">
+      </form>
+
+      <?php
+      if (isset($error_message)) {
+        echo "<div class='error-message'>{$error_message}</div>";
+      }
+      ?>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/sk/static/navbar.js"></script>
+  </body>
+</html>

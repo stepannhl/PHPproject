@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Управление заказами</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="/sk/static/style.css">
+  </head>
+
+  <body>
+    <header id="admin-navbar"></header>
+
+    <main>
+      <h2>УПРАВЛЕНИЕ ЗАКАЗАМИ</h2>
+
+      <div class="admin-management-btns">
+        <a href="/sk/admin_add_order.php">Добавить</a>
+        <a href="/sk/admin_delete_order.php">Удалить всё</a>
+      </div>
+
+      <ul>
+        <?php
+        if (isset($orders_data))
+        foreach ($orders_data as $this_order) {
+          echo "
+            <li>
+              Заказ {$this_order["id"]}.
+              Время доставки: {$this_order["time_of_delivery"]}.
+              Дата доставки: {$this_order["date_of_delivery"]}
+              <a href='/sk/admin_edit_order.php?order-id={$this_order["id"]}'>Изменить</a>
+              <a href='/sk/admin_delete_order.php?order-id={$this_order["id"]}'>Удалить</a>
+            </li>
+          ";
+        }
+        ?>
+
+        <!-- * Шаблон для вывода заказов. -->
+        <!-- <li>
+          Заказ ID. 
+          Время доставки. 
+          Дата доставки
+        </li>
+
+        <li>
+          Заказ ID. 
+          Время доставки. 
+          Дата доставки
+        </li>
+
+        <li>
+          Заказ ID. 
+          Время доставки. 
+          Дата доставки
+        </li> -->
+      </ul>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/sk/static/navbar.js"></script>
+  </body>
+</html>

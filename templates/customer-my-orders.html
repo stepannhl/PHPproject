@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мои заказы</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="/sk/static/style.css">
+  </head>
+
+  <body>
+    <header id="customer-navbar"></header>
+
+    <main>
+      <h2>МОИ ЗАКАЗЫ</h2>
+
+      <ul>
+      <?php
+      foreach ($orders_of_user_data as $this_order_of_user_data) {
+        $order_status_id = $this_order_of_user_data["order_status_id"];
+        echo "<li>";
+        if ($order_status_id == ORDER_PENDING_STATUS_ID) {
+          echo "<a class='link-empty-decoration pending-order' href='/sk/customer_order_page.php?order_id={$this_order_of_user_data["id"]}'>";
+        } elseif ($order_status_id == ORDER_SUCCESS_STATUS_ID) {
+          echo "<a class='link-empty-decoration accepted-order' href='/sk/customer_order_page.php?order_id={$this_order_of_user_data["id"]}'>";
+        } elseif ($order_status_id == ORDER_FAILURE_STATUS_ID) {
+          echo "<a class='link-empty-decoration rejected-order' href='/sk/customer_order_page.php?order_id={$this_order_of_user_data["id"]}'>";
+        }
+        echo "
+          Заказ {$this_order_of_user_data["id"]}. 
+          Время доставки: {$this_order_of_user_data["time_of_delivery"]}.
+          Дата доставки: {$this_order_of_user_data["date_of_delivery"]}.
+          Статус: {$this_order_of_user_data["order_status"]}
+        ";
+        echo "</a>"; 
+        echo "</li>";
+      }
+      ?>
+      </ul>
+
+      <!-- * Шаблон для вывода заказов. -->
+      <!-- <ul>
+        <li class="accepted-order">
+          Заказ ID.
+          Время доставки.
+          Дата доставки
+        </li>
+
+        <li class="rejected-order">
+          Заказ ID.
+          Время доставки.
+          Дата доставки
+        </li>
+
+        <li class="order-under-consideration">
+          Заказ ID.
+          Время доставки.
+          Дата доставки
+        </li>
+      </ul> -->
+    </main>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/sk/static/navbar.js"></script>
+  </body>
+</html>

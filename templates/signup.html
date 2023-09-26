@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="/sk/static/style.css">
+  </head>
+
+  <body>
+    <main>
+      <h1>Регистрация</h1>
+
+      <p>Чтобы получить доступ к контенту, необходимо войти в аккаунт</p>
+
+      <form action="" method="post">
+        <div>
+          <label for="username">Имя пользователя</label>
+          <input class="custom-input" type="text" name="username" id="username" required>
+        </div>
+
+        <div>
+          <label for="email">Электронная почта</label>
+          <input class="custom-input" type="text" name="email" id="email" required>
+        </div>
+
+        <div>
+          <label for="phone-number">Номер телефона</label>
+          <input class="custom-input" type="text" name="phone-number" id="phone-number" required>
+        </div>
+
+        <div>
+          <label for="password">Пароль</label>
+          <input class="custom-input" type="password" name="password" id="password" required>
+        </div>
+
+        <div>
+          <label for="password-confirmation">Пароль (подтверждение)</label>
+          <input class="custom-input" type="password" name="password-confirmation" id="password-confirmation" required>
+        </div>
+
+        <input type="submit" value="Принять">
+      </form>
+
+      <?php
+      if (isset($success_message)) {
+        echo "<div class='success-message'>{$success_message}</div>";
+      }
+
+      if (isset($error_message)) {
+        echo "<div class='error-message'>{$error_message}</div>";
+      }
+      ?>
+
+      <p><a href="/sk/login.php">Уже имеете аккаунт? Войти</a></p>
+    </main>
+  </body>
+</html>

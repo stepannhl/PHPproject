@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Просмотреть заказ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="/sk/static/style.css">
+  </head>
+
+  <body>
+    <header id="customer-navbar"></header>
+
+    <main>
+      <h2>
+        ЗАКАЗ №
+        <?php
+        if (isset($order_id)) {
+          echo $order_id;
+        }
+        ?> 
+      </h2>
+
+      <div class="order-data">
+        <div>Тип материала</div>
+        <div>
+          <?php
+          if (isset($order_data["type-of-material"])) {
+            echo $order_data["type-of-material"];
+          }
+          ?>
+        </div>
+
+        <div>Объем</div>
+        <div>
+          <?php
+          if (isset($order_data["volume"])) {
+            echo $order_data["volume"];
+          }
+          ?>
+        </div>
+
+        <div>Дата доставки</div>
+        <div>
+          <?php
+          if (isset($order_data["date-of-delivery"])) {
+            echo $order_data["date-of-delivery"];
+          }
+          ?>
+        </div>
+
+        <div>Время доставки</div>
+        <div>
+          <?php
+          if (isset($order_data["time-of-delivery"])) {
+            echo $order_data["time-of-delivery"];
+          }
+          ?>
+        </div>
+
+        <div>Может при проехать грузовик</div>
+        <div>
+          <?php
+          if (isset($order_data["can-truck-go-through"])) {
+            echo $order_data["can-truck-go-through"];
+          }
+          ?>
+        </div>
+
+        <div>Оплата в кредит</div>
+        <div>
+          <?php
+          if (isset($order_data["is-there-credit"])) {
+            echo $order_data["is-there-credit"];
+          }
+          ?>
+        </div>
+
+        <div>Цена</div>
+        <div>
+          <?php
+          if (isset($order_data["price"])) {
+            echo $order_data["price"];
+          }
+          ?>
+        </div>
+      </div>
+
+      <div class="btns-container">
+        <a class="link-empty-decoration" href="/sk/customer_my_orders.php">
+          <button>Назад</button>
+        </a>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/sk/static/navbar.js"></script>
+  </body>
+</html>
